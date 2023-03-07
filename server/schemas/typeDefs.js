@@ -8,8 +8,7 @@ const typeDefs = gpl`
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        saveBook(author: [String], description: String!, title: String!, 
-            bookId: String, image: String, link: String): User
+        saveBook(bookData: SaveBookInput!): User
         removeBook(bookId: ID!): User
     }
 
@@ -19,6 +18,15 @@ const typeDefs = gpl`
         email: String!
         bookCount: Int
         savedBooks: [Book]
+    }
+
+    input SaveBookInput{
+        author: [String]
+        description: String!
+        title: String! 
+        bookId: String
+        image: String
+        link: String
     }
 
     type Auth{
